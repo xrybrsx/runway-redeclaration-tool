@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="400.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ResultsController">
+   <children>
+      <HBox prefHeight="402.0" prefWidth="640.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="423.0">
+               <children>
+                  <Button fx:id="showResults" layoutX="108.0" layoutY="359.0" mnemonicParsing="false" onAction="#showResults" onMouseClicked="#drawRunway" text="SHOW RESULTS" />
+                  <Canvas fx:id="canvas" height="337.0" layoutX="-2.0" layoutY="14.0" width="319.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="6.0" layoutX="20.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="400.0" prefWidth="314.0">
+               <children>
+                  <Text layoutX="7.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old runway:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="7.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Results: " wrappingWidth="300.536687374115">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="breakdownCalc" layoutX="7.0" layoutY="293.0" mnemonicParsing="false" onAction="#displayCalculation" prefHeight="43.0" prefWidth="301.0" text="View Calculation Breakdown">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="newTora" layoutX="7.0" layoutY="30.0" prefHeight="17.0" prefWidth="146.0" text="TORA: " />
+                  <Label fx:id="newToda" layoutX="7.0" layoutY="47.0" prefHeight="17.0" prefWidth="146.0" text="TODA: " />
+                  <Label fx:id="newAsda" layoutX="7.0" layoutY="70.0" prefHeight="17.0" prefWidth="146.0" text="ASDA: " />
+                  <Label fx:id="newLDA" layoutX="7.0" layoutY="93.0" prefHeight="17.0" prefWidth="136.0" text="LDA: " />
+                  <Label fx:id="newDisplacedThreshold" layoutX="8.0" layoutY="119.0" prefHeight="17.0" prefWidth="250.0" text="Displaced Threshold:" />
+                  <Label fx:id="newStripEnd" layoutX="165.0" layoutY="30.0" prefHeight="17.0" prefWidth="136.0" text="Strip End: " />
+                  <Label fx:id="newClearway" layoutX="165.0" layoutY="47.0" prefHeight="17.0" prefWidth="136.0" text="Clearway:" />
+                  <Label fx:id="newStopway" layoutX="165.0" layoutY="70.0" prefHeight="17.0" prefWidth="136.0" text="Stopway:" />
+                  <Label fx:id="newResa" layoutX="165.0" layoutY="93.0" prefHeight="17.0" prefWidth="136.0" text="RESA:" />
+                  <Label fx:id="oldTora" layoutX="8.0" layoutY="171.0" prefHeight="17.0" prefWidth="146.0" text="TORA: " />
+                  <Label fx:id="oldToda" layoutX="7.0" layoutY="188.0" prefHeight="35.0" prefWidth="146.0" text="TODA: " />
+                  <Label fx:id="oldLDA" layoutX="8.0" layoutY="242.0" prefHeight="17.0" prefWidth="146.0" text="LDA: " />
+                  <Label fx:id="oldDisplacedThreshold" layoutX="9.0" layoutY="267.0" prefHeight="17.0" prefWidth="201.0" text="Displaced Threshold:" />
+                  <Label fx:id="oldStripEnd" layoutX="165.0" layoutY="171.0" prefHeight="17.0" prefWidth="136.0" text="Strip End:" />
+                  <Label fx:id="oldClearway" layoutX="165.0" layoutY="192.0" prefHeight="17.0" prefWidth="146.0" text="Clearway:" />
+                  <Label fx:id="oldResa" layoutX="164.0" layoutY="234.0" prefHeight="17.0" prefWidth="146.0" text="RESA:" />
+                  <Label fx:id="oldStopway" layoutX="165.0" layoutY="215.0" prefHeight="17.0" prefWidth="146.0" text="Stopway:" />
+                  <Label fx:id="oldAsda" layoutX="8.0" layoutY="215.0" prefHeight="17.0" prefWidth="146.0" text="ASDA: " />
+                  <Button fx:id="returnToHomePage" layoutX="7.0" layoutY="343.0" mnemonicParsing="false" onAction="#goBack" prefHeight="43.0" prefWidth="301.0" text="Return to Homepage">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="401.0" prefWidth="345.0">
+               <children>
+                  <ListView fx:id="notifications" layoutX="15.0" layoutY="76.0" prefHeight="313.0" prefWidth="319.0" />
+                  <Label layoutX="87.0" layoutY="45.0" text="Notifications Center">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="230.0" layoutY="13.0" prefHeight="22.0" prefWidth="77.0" text="Need Help">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="WHITE" layoutX="320.0" layoutY="24.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="316.0" layoutY="10.0" text="?">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="helpButton" layoutX="306.0" layoutY="6.0" mnemonicParsing="false" onAction="#information" opacity="0.0" prefHeight="35.0" prefWidth="30.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>

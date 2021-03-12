@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox onKeyPressed="#disableChecks" onKeyReleased="#disableChecks" onKeyTyped="#disableChecks" onMouseClicked="#disableChecks" onMouseDragged="#disableChecks" onMouseEntered="#disableChecks" onMouseExited="#disableChecks" onMouseMoved="#disableChecks" onMousePressed="#disableChecks" onMouseReleased="#disableChecks" onScroll="#disableChecks" onScrollFinished="#disableChecks" onScrollStarted="#disableChecks" onTouchMoved="#disableChecks" onTouchPressed="#disableChecks" onTouchReleased="#disableChecks" onTouchStationary="#disableChecks" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LandingOverController">
+   <children>
+      <AnchorPane prefHeight="102.0" prefWidth="900.0">
+         <children>
+            <Label contentDisplay="CENTER" layoutX="250.0" layoutY="-17.0" text="Landing over obstacle" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </Label>
+            <Label layoutX="779.0" layoutY="63.0" text="Need Help">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Circle fill="WHITE" layoutX="872.0" layoutY="74.0" radius="14.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="868.0" layoutY="60.0" text="?">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="helpButton" layoutX="855.0" layoutY="59.0" mnemonicParsing="false" onAction="#information" opacity="0.0" prefHeight="31.0" prefWidth="44.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="301.0" prefWidth="605.0">
+         <children>
+            <Text layoutX="73.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALS (Slope) (m):" wrappingWidth="218.13665771484375">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blast Protection Allowance (BPA) (m):" wrappingWidth="198.93670654296875">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+            <TextField fx:id="als" layoutX="291.0" layoutY="70.0" prefHeight="40.0" prefWidth="218.0" />
+            <TextField fx:id="bpa" layoutX="291.0" layoutY="173.0" prefHeight="40.0" prefWidth="218.0" />
+            <Button fx:id="confirm" layoutX="464.0" layoutY="249.0" mnemonicParsing="false" onAction="#switchScenes" prefHeight="40.0" prefWidth="94.0" text="Confirm" />
+            <Button fx:id="submit" layoutX="345.0" layoutY="249.0" mnemonicParsing="false" onAction="#calculateResults" prefHeight="40.0" prefWidth="94.0" text="Submit " />
+            <Button fx:id="back" layoutX="14.0" layoutY="-2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="94.0" text="&lt; Back">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <ListView fx:id="notifications" layoutX="579.0" layoutY="29.0" prefHeight="261.0" prefWidth="306.0" />
+            <Label layoutX="644.0" layoutY="-1.0" text="Notifications Center">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Circle fill="WHITE" layoutX="491.0" layoutY="90.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="491.0" layoutY="193.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="489.0" layoutY="77.0" text="i">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="489.0" layoutY="179.0" text="i">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button fx:id="info" layoutX="480.0" layoutY="71.0" mnemonicParsing="false" onAction="#moreInfo" opacity="0.0" prefHeight="38.0" prefWidth="28.0" />
+            <Button fx:id="info1" layoutX="478.0" layoutY="175.0" mnemonicParsing="false" onAction="#moreInfo1" opacity="0.0" prefHeight="40.0" prefWidth="28.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
