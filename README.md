@@ -2,4 +2,4 @@
 
 COMP2211 SEG Project, Group 35
 
-testing
+University of Southampton Group Coursework 
