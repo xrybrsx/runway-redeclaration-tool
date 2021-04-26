@@ -1,8 +1,21 @@
 package sample;
 
+import javafx.stage.FileChooser;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.rules.TemporaryFolder;
+import org.xml.sax.SAXException;
 
-import static org.junit.Assert.assertEquals;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class testCalculate {
 
@@ -45,7 +58,7 @@ public class testCalculate {
     }
 
     //scenario1-12m tall obstacle, on the centreline, 50m before the 09L threshold,
-    // i.e. to the west of the threshold. The same obstacle is 3646m from the 27R threshold.
+    //i.e. to the west of the threshold. The same obstacle is 3646m from the 27R threshold.
     //test to calculatecheck Landing over Obstacle
     @Test
     public void testCalculateLOO1() {
@@ -76,7 +89,6 @@ public class testCalculate {
         assertEquals(3346, asda, 0.0);
     }
 
-
     //scenario1-test to check Landing Towards Obstacle
     @Test
     public void testCalculateTOTO1() {
@@ -85,7 +97,7 @@ public class testCalculate {
         assertEquals(2986, lTOTO, 0.0);
     }
 
-    //scenario225m tall obstacle, 20m south of the centerline,
+    //scenario 225m tall obstacle, 20m south of the centerline,
     // 500m from the 27L threshold and 2853m from 09R threshold.
     // -test to check calculate of Landing over Obstacle
     @Test
@@ -205,4 +217,104 @@ public class testCalculate {
         int lTOTO= new TakeOffTowardsObstacle(50).recalculate(3546, 306, 20, 50, 240, 60);
         assertEquals(2792, lTOTO, 0.0);
     }
+
+    //check method determining if a runway name has a letter as its last char
+    @Test
+    public void testCharMethodTrue(){
+        Runway run1 = new Runway("27R", 3884,3962,3884, 3884, 0, 60, 0, 0,0);
+        ResultsController resultsController = new ResultsController();
+        assertTrue(resultsController.checkForRunwayCouple(run1));
+    }
+
+    //check method determining if a runway name has a letter as it last char
+    @Test
+    public void testCharMethodFalse(){
+        Runway run1 = new Runway("27", 3884,3962,3884, 3884, 0, 60, 0, 0,0);
+        ResultsController resultsController = new ResultsController();
+        assertFalse(resultsController.checkForRunwayCouple(run1));
+    }
+
+    //check method returns string of opposite runway with a zero in front if that runway number contains only a single number.
+    @Test
+    public void testForOppositeRunway1(){
+        Runway run1 = new Runway("27R", 3884,3962,3884, 3884, 0, 60, 0, 0,0);
+        ResultsController resultsController = new ResultsController();
+        assertEquals("09L",resultsController.checkForPair(run1));
+        assertNotEquals("9L",resultsController.checkForPair(run1));
+    }
+
+    //check method returns string of opposite runway
+    @Test
+    public void testForOppositeRunway2(){
+        Runway run1 = new Runway("09L", 3902,3902,3902, 3593, 306, 60, 0, 0,240);
+        ResultsController resultsController = new ResultsController();
+        assertEquals("27R",resultsController.checkForPair(run1));
+    }
+
+    //check method for multiple letters in the runway name. Throws a NumberFormatException because it rightfully
+    //fails to convert a string containing both numbers and letters to an integer
+    @Test
+    public void testForOppositeRunway3(){
+        Runway run1 = new Runway("09LR", 3902,3902,3902, 3593, 306, 60, 0, 0,240);
+        ResultsController resultsController = new ResultsController();
+        assertThrows(NumberFormatException.class, () -> {
+            resultsController.checkForPair(run1);
+        });
+    }
+
+    //check method for only letters in the runway name. It fails because you cannot make an integer
+    //out of letters
+    @Test
+    public void testForOppositeRunway4(){
+        Runway run1 = new Runway("R", 3902,3902,3902, 3593, 306, 60, 0, 0,240);
+        ResultsController resultsController = new ResultsController();
+        assertThrows(NumberFormatException.class, () -> {
+            resultsController.checkForPair(run1);
+        });
+    }
+
+    //check method returns string 36L instead of 0L as the opposite runway for 18R (because range of runway numbers are 1 to 36)
+    @Test
+    public void testForOppositeRunway5(){
+        Runway run1 = new Runway("18L",3902,3902,3902,3593,306,60,0,0,240);
+        ResultsController resultsController = new ResultsController();
+        assertEquals("36R",resultsController.checkForPair(run1));
+    }
+
+    private Runway runway;
+
+    //method checks if -1 is returned when the runway number is wrong
+    @Test
+    public void testForOppositeRunway6(){
+        ResultsController resultsController = new ResultsController();
+        runway = new Runway("37R",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway("37L",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway("37C",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway ("100L",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway ("1000C",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway ("9000",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway ("0R",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway ("0L",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway ("0C",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Runway number not in range between 1 to 36","-1",resultsController.checkForPair(runway));
+        runway = new Runway ("36R",3902,3902,3902,3593,306,60,0,0,240);
+        assertEquals("Something is wrong","18L",resultsController.checkForPair(runway));
+    }
+
+    //Test for opposite runway ending on a C
+    @Test
+    public void testForOppositeRunway7(){
+        Runway run1 = new Runway("09C", 3902,3902,3902, 3593, 306, 60, 0, 0,240);
+        ResultsController resultsController = new ResultsController();
+        assertEquals("27C",resultsController.checkForPair(run1));
+    }
+
 }

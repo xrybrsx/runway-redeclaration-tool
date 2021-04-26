@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "UTF-8" standalone = "yes"?>
+<obstacles>
+	<obstacle>
+		<name>BoeingMan</name>
+		<height>20</height>
+		<distancefromcenter>2</distancefromcenter>
+		<distancefromthreshold>20</distancefromthreshold>
+	</obstacle>
+	<obstacle>
+		<name>AirbusMan</name>
+		<height>25</height>
+		<distancefromcenter>0</distancefromcenter>
+		<distancefromthreshold>200</distancefromthreshold>
+	</obstacle>
+</obstacles>

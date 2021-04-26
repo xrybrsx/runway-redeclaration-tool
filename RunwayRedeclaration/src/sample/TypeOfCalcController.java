@@ -1,3 +1,4 @@
+/*
 package sample;
 
 import javafx.event.ActionEvent;
@@ -60,6 +61,7 @@ public class TypeOfCalcController {
 
     //lambda function to send to results scene
     //Landing Towards Obstacle calculation done in this method
+
     public void switchToResults(ActionEvent event) throws IOException {
         LandingTowardsObstacle lto = new LandingTowardsObstacle();
         Runway newRunway = new Runway(runway.getRunwayNumber(), runway.getTora(), runway.getToda(), runway.getAsda(),lto.recalculate(obstacle.getDistanceFromThreshold(),runway.getResa(),runway.getStripEnd()), runway.getDisplacedThreshold(), runway.getStripEnd(), runway.getStopway(), runway.getClearway(), runway.getResa());
@@ -74,6 +76,8 @@ public class TypeOfCalcController {
         window.setScene(obstacleScene);
         window.show();
     }
+
+
 
    //functionToSendTo "take off away from obstacle screen"
     public void switchToTakeOffAwayScreen(ActionEvent event) throws IOException {
@@ -128,3 +132,6 @@ public class TypeOfCalcController {
         stage.show();
     }
 }
+
+
+ */

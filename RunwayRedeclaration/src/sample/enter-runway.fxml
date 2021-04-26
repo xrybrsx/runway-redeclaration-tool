@@ -141,6 +141,11 @@
                </font>
             </Button>
             <ListView fx:id="notifications" layoutX="613.0" layoutY="-36.0" prefHeight="190.0" prefWidth="277.0" />
+            <Button fx:id="editButton" layoutX="637.0" layoutY="174.0" mnemonicParsing="false" onAction="#enableEditing" prefHeight="31.0" prefWidth="102.0" text="Edit">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
   </children>

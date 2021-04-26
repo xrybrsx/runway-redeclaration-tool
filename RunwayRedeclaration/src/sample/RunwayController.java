@@ -1,3 +1,4 @@
+/*
 package sample;
 
 import javafx.beans.value.ObservableValue;
@@ -34,6 +35,7 @@ public class RunwayController implements Initializable {
     @FXML private AnchorPane inputAnchor;
     @FXML private ListView list;
     @FXML private Button chooseButton;
+    @FXML private Button editButton;
     @FXML private Button deleteRunwayObjectButton;
     @FXML private Button continueButton;
     @FXML private ListView notifications;
@@ -98,6 +100,7 @@ public class RunwayController implements Initializable {
             }
         if(!valid){
             createRunwayObjectButton.setDisable(true);
+            editButton.setDisable(true);
         }
         else{
             createRunwayObjectButton.setDisable(false);
@@ -105,7 +108,7 @@ public class RunwayController implements Initializable {
     }
 
     //Method checks if item from runway list is selected and, therefore, decides
-    //if the  delete from list button can be used
+    //if the delete from list button can be used
     public void canDeleteFromList(){
       if(list.getSelectionModel().isEmpty()){
           deleteRunwayObjectButton.setDisable(true);
@@ -171,8 +174,23 @@ public class RunwayController implements Initializable {
                 stripEnd.setText(String.valueOf(o.getStripEnd()));
                 resa.setText(String.valueOf(o.getResa()));
             }
-        }notifications.getItems().add(new String("Runway " +  obj.toString() + " was chosen from the list."));
+        }
+
+        notifications.getItems().add(new String("Runway " +  obj.toString() + " was chosen from the list."));
         continueButton.setDisable(false);
+        editButton.setDisable(false);
+
+        for(Node n: inputAnchor.getChildren())
+        if(n instanceof TextField) {
+            ((TextField) n).setEditable(false);
+        }
+    }
+
+    public void enableEditing(ActionEvent event) throws IOException {
+        for(Node n: inputAnchor.getChildren())
+            if(n instanceof TextField) {
+                ((TextField) n).setEditable(true);
+            }
     }
 
     //Method allows switching of scenes (views) from "enter runway" view to obstacle view
@@ -232,8 +250,9 @@ public class RunwayController implements Initializable {
                 "Either\n" + "1. Enter a runway number and all the other runway parameters to create a new runway.\n" + "2. Click the 'Add to list' button to add it to the list.\n" +
                 "3. Find that runway on the list and click it.\n" + "4. Click on the 'Choose' button.\n" + "5. Click on the 'Continue' button.\n\n" +
                 "OR\n" + "1. Choose one of the existing runways from the list and click on it.\n" + "2. Click on the 'Choose' button.\n" + "3. Click on the 'Continue' button.\n\n" +
-                "**Delete a runway by scrolling down the list to find it then click on it and finally click on the 'Delete from list' button.");
-        Scene scene = new Scene(info,650,250);
+                "**Delete a runway by scrolling down the list to find it then click on it and finally click on the 'Delete from list' button.\n" +
+                "NOTE: After choosing a runway you can edit the data by pressing the Edit button then typing on the text fields.");
+        Scene scene = new Scene(info,650,300);
         Stage stage = new Stage();
         stage.setTitle("Instructions on how to choose a runway");
         stage.setScene(scene);
@@ -262,3 +281,6 @@ public class RunwayController implements Initializable {
         stage.show();
     }
 }
+
+
+ */

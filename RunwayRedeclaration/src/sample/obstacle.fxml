@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox onKeyPressed="#disableChecks" onKeyReleased="#disableChecks" onKeyTyped="#disableChecks" onMouseClicked="#disableChecks" onMouseDragged="#disableChecks" onMouseEntered="#disableChecks" onMouseExited="#disableChecks" onMouseMoved="#disableChecks" onMousePressed="#disableChecks" onMouseReleased="#disableChecks" onScroll="#disableChecks" onScrollFinished="#disableChecks" onScrollStarted="#disableChecks" onTouchMoved="#disableChecks" onTouchPressed="#disableChecks" onTouchReleased="#disableChecks" onTouchStationary="#disableChecks" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ObstacleController">
+<VBox onKeyPressed="#disableChecks" onKeyReleased="#disableChecks" onKeyTyped="#disableChecks" onMouseClicked="#disableChecks" onMouseDragged="#disableChecks" onMouseEntered="#disableChecks" onMouseExited="#disableChecks" onMouseMoved="#disableChecks" onMousePressed="#disableChecks" onMouseReleased="#disableChecks" onScroll="#disableChecks" onScrollFinished="#disableChecks" onScrollStarted="#disableChecks" onTouchMoved="#disableChecks" onTouchPressed="#disableChecks" onTouchReleased="#disableChecks" onTouchStationary="#disableChecks" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ObstacleController">
    <children>
       <AnchorPane prefHeight="92.0" prefWidth="900.0">
          <children>
@@ -78,6 +74,7 @@
                </font>
             </Label>
             <Button fx:id="info" layoutX="241.0" layoutY="34.0" mnemonicParsing="false" onAction="#moreInfo" opacity="0.0" prefHeight="30.0" prefWidth="32.0" />
+            <Button id="chooseObstacle" fx:id="editButton" layoutX="554.0" layoutY="268.0" mnemonicParsing="false" onAction="#enableEditing" prefHeight="34.0" prefWidth="90.0" text="Edit" />
          </children>
       </AnchorPane>
    </children>

@@ -1,3 +1,4 @@
+/*
 package sample;
 
 import javafx.beans.value.ObservableValue;
@@ -37,6 +38,7 @@ public class ObstacleController implements Initializable {
     @FXML private ListView notifications;
     @FXML private Button helpButton;
     @FXML private Button info;
+    @FXML private Button editButton;
     private boolean valid = true;
     private Obstacle obstacle;
     private Runway runway;
@@ -143,6 +145,12 @@ public class ObstacleController implements Initializable {
         }
         notifications.getItems().add(new String("Obstacle " + obj.toString()+ " was chosen from list of obstacles."));
         continueButton.setDisable(false);
+        editButton.setDisable(false);
+
+        for(Node n: anchor.getChildren())
+            if(n instanceof TextField) {
+                ((TextField) n).setEditable(false);
+            }
     }
 
     //Method carries out all checks to determine if buttons on the view can be used
@@ -160,6 +168,7 @@ public class ObstacleController implements Initializable {
                 valid = ((TextField) n).getText().length() != 0;
         if(!valid){
             newObstacle.setDisable(true);
+            editButton.setDisable(true);
         }
         else{
             newObstacle.setDisable(false);
@@ -232,6 +241,13 @@ public class ObstacleController implements Initializable {
             }
     }
 
+    public void enableEditing(ActionEvent event) throws IOException {
+        for(Node n: anchor.getChildren())
+            if(n instanceof TextField) {
+                ((TextField) n).setEditable(true);
+            }
+    }
+
     //Method sends us back to the homepage screen
     public void goBack(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -259,8 +275,9 @@ public class ObstacleController implements Initializable {
                 "Either\n" + "1. Enter the name,height,distance from centreline and distance from threshold to create a new obstacle.\n" + "2. Click the 'Create new' button to add it to the list.\n" +
                 "3. Find that obstacle on the list and click it.\n" + "4. Click on the 'Choose' button.\n" + "5. Click on the 'Continue' button.\n\n" +
                 "OR\n" + "1. Choose one of the existing obstacles from the list and click on it.\n" + "2. Click on the 'Choose' button.\n" + "3. Click on the 'Continue' button.\n\n" +
-                "**Delete an obstacle by scrolling down the list to find it then click on it and finally click on the 'Delete obstacle' button.");
-        Scene scene = new Scene(info,650,250);
+                "**Delete an obstacle by scrolling down the list to find it then click on it and finally click on the 'Delete obstacle' button.\n" +
+                "NOTE: After choosing an obstacle you can edit the data by pressing the Edit button then typing on the text fields.");
+        Scene scene = new Scene(info,650,300);
         Stage stage = new Stage();
         stage.setTitle("Instructions on how to choose an obstacle");
         stage.setScene(scene);
@@ -283,3 +300,5 @@ public class ObstacleController implements Initializable {
     }
 }
 
+
+ */

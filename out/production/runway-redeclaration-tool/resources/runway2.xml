@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8" standalone = "yes"?>
+<runways>
+    <runway id = "5L">
+            <orientation>left</orientation>
+            <designator>5L</designator>
+            <tora>4000</tora>
+            <toda>4100</toda>
+            <asda>4000</asda>
+            <lda>4000</lda>
+            <threshold>0</threshold>
+            <stripEnd>100</stripEnd>
+            <clearway>100</clearway>
+            <stopway>50</stopway>
+            <resa>0</resa>
+    </runway>
+    <runway id = "16L">
+            <orientation>left</orientation>
+            <designator>16L</designator>
+            <tora>4000</tora>
+            <toda>4100</toda>
+            <asda>4000</asda>
+            <lda>4000</lda>
+            <threshold>0</threshold>
+            <stripEnd>100</stripEnd>
+            <clearway>100</clearway>
+            <stopway>50</stopway>
+            <resa>0</resa>
+    </runway>
+
+</runways>

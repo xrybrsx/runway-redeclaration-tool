@@ -40,9 +40,9 @@ public class TakeOffAwayFromObstacle extends Calculation {
     TODA and ASDA values
      */
     public void recalculate(int tora, int toda, int asda, int distanceFromThreshold, int blastProtectionAllowance, int clearWay, int stopWay){
-        this.newTora = (tora - distanceFromThreshold - blastProtectionAllowance) + clearWay + stopWay;
-        this.newToda = (toda - distanceFromThreshold - blastProtectionAllowance) + clearWay + stopWay;
-        this.newAsda = (asda - distanceFromThreshold - blastProtectionAllowance) + clearWay + stopWay;
+        this.newTora = (tora - distanceFromThreshold - blastProtectionAllowance);
+        this.newToda = (toda - distanceFromThreshold - blastProtectionAllowance) + clearWay;
+        this.newAsda = (asda - distanceFromThreshold - blastProtectionAllowance) + stopWay;
     }
 
     //Getter method returns new recalculated take-off run available (TORA)

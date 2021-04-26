@@ -1,3 +1,4 @@
+/*
 package sample;
 
 import javafx.event.ActionEvent;
@@ -134,3 +135,6 @@ public class TakeOffAwayController implements Initializable {
         stage.show();
     }
 }
+
+
+ */
