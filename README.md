@@ -1,5 +1,5 @@
 # Runway Redeclaration Tool
 
-COMP2211 SEG Project, Group 35
+COMP2211 Software Engineering Group Project, Group 35
 
-University of Southampton Group Coursework 
+University of Southampton 
