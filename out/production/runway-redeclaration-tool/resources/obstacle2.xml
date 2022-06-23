@@ -1,9 +1,0 @@
-<?xml version = "1.0" encoding = "UTF-8" standalone = "yes"?>
-<obstacles>
-	<obstacle>
-		<name>BombardierMan</name>
-		<height>27</height>
-		<distancefromcenter>2</distancefromcenter>
-		<distancefromthreshold>20</distancefromthreshold>
-	</obstacle>
-</obstacles>
